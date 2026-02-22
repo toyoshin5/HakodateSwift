@@ -32,29 +32,100 @@ struct ShiroiKoibitoView: View {
 struct CookieView: View {
     var body: some View {
         ZStack {
+            // パステルイエローのベース生地 (中心部が明るく、外側が少し暗い)
             RoundedRectangle(cornerRadius: 15)
-                .fill(Color(red: 0.95, green: 0.88, blue: 0.72))
+                .fill(
+                    RadialGradient(
+                        gradient: Gradient(colors: [
+                            Color(red: 0.99, green: 0.96, blue: 0.85),  // 中心
+                            Color(red: 0.93, green: 0.86, blue: 0.70),  // 外側
+                        ]),
+                        center: .center,
+                        startRadius: 20,
+                        endRadius: 90
+                    )
+                )
 
+            // 焼き色1: 内側のぼんやりしたグラデーション
             RoundedRectangle(cornerRadius: 15)
-                .stroke(Color(red: 0.82, green: 0.53, blue: 0.22), lineWidth: 8)
+                .strokeBorder(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 0.85, green: 0.60, blue: 0.25).opacity(0.4),
+                            Color(red: 0.90, green: 0.70, blue: 0.40).opacity(0.1),
+                            Color(red: 0.85, green: 0.55, blue: 0.20).opacity(0.5),
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 12
+                )
                 .blur(radius: 6)
-                .padding(4)
+
+            // 焼き色2: 外周の濃い焼き色 (重ねがけでよりリアルに)
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 0.80, green: 0.45, blue: 0.15).opacity(0.8),
+                            Color(red: 0.70, green: 0.35, blue: 0.10).opacity(0.6),
+                            Color(red: 0.85, green: 0.50, blue: 0.15).opacity(0.8),
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 6
+                )
+                .blur(radius: 3)
+                .padding(2)
+
+            // 焼き色3: さらに細く濃いフチ
+            RoundedRectangle(cornerRadius: 15)
+                .strokeBorder(
+                    Color(red: 0.65, green: 0.35, blue: 0.1).opacity(0.6),
+                    lineWidth: 2
+                )
+                .blur(radius: 1)
         }
         .frame(width: 160, height: 160)
         .rotationEffect(.degrees(45))
         .scaleEffect(y: 0.5)
-        .shadow(color: .black.opacity(0.15), radius: 5, x: 0, y: 10)
+        // 生地の厚みと、上からのハイライトを表現
+        .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 12)
+        .shadow(color: .white.opacity(0.5), radius: 2, x: -1, y: -2)
     }
 }
 
 struct ChocolateView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
-            .fill(Color(red: 0.99, green: 0.98, blue: 0.93))
+            .fill(
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.99, green: 0.99, blue: 0.97),
+                        Color(red: 0.95, green: 0.94, blue: 0.89),
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
             .frame(width: 175, height: 175)
+            // チョコの厚みを表現するハイライトとエッジシャドウ
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.white, lineWidth: 1.5)
+                    .blur(radius: 1)
+                    .offset(x: -1, y: -1)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color(red: 0.85, green: 0.82, blue: 0.75), lineWidth: 1)
+                    .blur(radius: 1)
+                    .offset(x: 1, y: 1)
+            )
             .rotationEffect(.degrees(45))
             .scaleEffect(y: 0.5)
-            .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 5)
+            .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 6)
     }
 }
 
@@ -87,10 +158,9 @@ struct ShiroiKoibitoPackageView: View {
             Image(systemName: "snowflake")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 120)
+                .frame(width: 100)
                 .foregroundColor(.white)
-                .offset(x: 100, y: 10)
-                .rotationEffect(.degrees(45))
+                .offset(x: 90, y: -40)
                 .opacity(0.95)
 
             Image(systemName: "snowflake")

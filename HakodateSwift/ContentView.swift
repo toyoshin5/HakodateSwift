@@ -17,12 +17,9 @@ struct ContentView: View {
                 Text("白い恋人")
                     .font(.system(size: 36, weight: .bold, design: .serif))
                     .foregroundColor(.white)
-
+                ShiroiKoibitoPackageView()
                 ShiroiKoibitoView()
 
-                Text("タップしてレイヤーを展開")
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(0.8))
             }
         }
     }
