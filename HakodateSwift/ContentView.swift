@@ -14,9 +14,6 @@ struct ContentView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 50) {
-                Text("白い恋人")
-                    .font(.system(size: 36, weight: .bold, design: .serif))
-                    .foregroundColor(.white)
                 ShiroiKoibitoPackageView()
                 ShiroiKoibitoView()
 
