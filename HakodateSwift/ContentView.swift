@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color(red: 0.1, green: 0.4, blue: 0.4)
+                .ignoresSafeArea()
+
+            VStack(spacing: 50) {
+                Text("白い恋人")
+                    .font(.system(size: 36, weight: .bold, design: .serif))
+                    .foregroundColor(.white)
+
+                ShiroiKoibitoView()
+
+                Text("タップしてレイヤーを展開")
+                    .font(.caption)
+                    .foregroundColor(.white.opacity(0.8))
+            }
         }
-        .padding()
     }
 }
 
