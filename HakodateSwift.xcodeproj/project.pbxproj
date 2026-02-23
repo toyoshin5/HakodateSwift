@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F05A32B12F4C26C700D615A6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F05A32AF2F4C26C400D615A6 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F01FD4472F4AD15600534A3A /* HakodateSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HakodateSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F05A32AF2F4C26C400D615A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,6 +39,7 @@
 			children = (
 				F01FD4492F4AD15600534A3A /* HakodateSwift */,
 				F01FD4482F4AD15600534A3A /* Products */,
+				F05A32AF2F4C26C400D615A6 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05A32B12F4C26C700D615A6 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

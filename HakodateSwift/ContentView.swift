@@ -10,11 +10,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Color(red: 0.1, green: 0.4, blue: 0.4)
+            Color(red: 0.2, green: 0.5, blue: 0.5)
                 .ignoresSafeArea()
 
             VStack(spacing: 50) {
                 ShiroiKoibitoPackageView()
+                    .shadow(color: .black.opacity(0.6), radius: 8, x: 0, y: 6)
                 ShiroiKoibitoView()
 
             }
