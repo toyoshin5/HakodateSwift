@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct HakodateSwiftApp: App {
+struct ShiroiKoibitoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

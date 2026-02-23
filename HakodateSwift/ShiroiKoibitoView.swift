@@ -13,16 +13,16 @@ struct ShiroiKoibitoView: View {
     var body: some View {
         ZStack {
             CookieView()
-                .offset(y: isExpanded ? 70 : 10)
+                .offset(y: isExpanded ? 70 : 8)
 
             ChocolateView()
                 .offset(y: isExpanded ? 0 : 0)
 
             CookieView()
-                .offset(y: isExpanded ? -70 : -10)
+                .offset(y: isExpanded ? -70 : -8)
         }
         .onTapGesture {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.6)) {
+            withAnimation(.smooth(duration: 0.3)) {
                 isExpanded.toggle()
             }
         }
@@ -32,7 +32,6 @@ struct ShiroiKoibitoView: View {
 struct CookieView: View {
     var body: some View {
         ZStack {
-            // パステルイエローのベース生地 (中心部が明るく、外側が少し暗い)
             RoundedRectangle(cornerRadius: 15)
                 .fill(
                     RadialGradient(
@@ -46,7 +45,6 @@ struct CookieView: View {
                     )
                 )
 
-            // 焼き色1: 内側のぼんやりしたグラデーション
             RoundedRectangle(cornerRadius: 15)
                 .strokeBorder(
                     LinearGradient(
@@ -63,7 +61,6 @@ struct CookieView: View {
                 .blur(radius: 6)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
 
-            // 焼き色2: 外周の濃い焼き色 (重ねがけでよりリアルに)
             RoundedRectangle(cornerRadius: 15)
                 .strokeBorder(
                     LinearGradient(
@@ -80,7 +77,6 @@ struct CookieView: View {
                 .blur(radius: 3)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
 
-            // 焼き色3: さらに細く濃いフチ
             RoundedRectangle(cornerRadius: 15)
                 .strokeBorder(
                     Color(red: 0.65, green: 0.35, blue: 0.1).opacity(0.6),
@@ -91,9 +87,8 @@ struct CookieView: View {
         .frame(width: 160, height: 160)
         .rotationEffect(.degrees(45))
         .scaleEffect(y: 0.5)
-        // 生地の厚みと、上からのハイライトを表現
-        // .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 12)
-        // .shadow(color: .white.opacity(0.5), radius: 2, x: -1, y: -2)
+        
+        .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 4)
     }
 }
 
@@ -111,7 +106,6 @@ struct ChocolateView: View {
                 )
             )
             .frame(width: 170, height: 170)
-            // チョコの厚みを表現するハイライトとエッジシャドウ
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.white, lineWidth: 1.5)
@@ -175,7 +169,7 @@ struct ShiroiKoibitoPackageView: View {
 
             VStack(alignment: .center, spacing: 5) {
                 Text("白い恋人")
-                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .font(.custom("HiraMaruProN-W4", size: 30))
                     .foregroundColor(.white)
 
                 VStack(spacing: 1) {
